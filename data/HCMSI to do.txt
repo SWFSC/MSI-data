@@ -1,0 +1,6 @@
+* Incorporate 2023 cross-center review for pinnipeds, available here:
+https://docs.google.com/spreadsheets/d/1nIJmpcRbp58kwYhEJRStRMcJH8U_Roaa/edit?pli=1&gid=656614837#gid=656614837
+
+* add field for National Stranding DB record ID?
+
+* add "Other.identifiers" field

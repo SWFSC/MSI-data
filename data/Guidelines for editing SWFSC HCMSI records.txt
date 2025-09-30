@@ -1,3 +1,4 @@
 Retain lat/lon info in Comments for humpbacks and for harbor seals where needed to show stock attribution. 
+Add entanglement and vessel strike IDs, CRC IDs to Other.identifiers field
 No carriage returns in narrative (Comments field).
 Use consistent terminology to maintain functionality of automated reporting (see SeriousInjuryExtract.R).
