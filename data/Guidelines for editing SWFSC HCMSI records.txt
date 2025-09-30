@@ -1,0 +1,2 @@
+No carriage returns in narrative (Comments field).
+Use consistent terminology to maintain functionality of automated reporting (see SeriousInjuryExtract.R).
