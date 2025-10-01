@@ -3,4 +3,10 @@ https://docs.google.com/spreadsheets/d/1nIJmpcRbp58kwYhEJRStRMcJH8U_Roaa/edit?pl
 
 * add field for National Stranding DB record ID?
 
+* Add lat/lon fields and populate
+
 * add "Other.identifiers" field
+
+* populate past 5 years of NSDB IDs, lats for humpbacks
+
+* Add script to repo in a new R directory that Jim used to concatenate all narrative fields in NSDB entry. 
