@@ -1,5 +1,8 @@
-* Incorporate 2023 cross-center review for pinnipeds, available here:
-https://docs.google.com/spreadsheets/d/1nIJmpcRbp58kwYhEJRStRMcJH8U_Roaa/edit?pli=1&gid=656614837#gid=656614837
+* Incorporate 2023 cross-center review for pinnipeds
+
+* additional changes suggested by Jim for data review? 
+
+* complete and revise(?) categorization of all Interaction.Type possibilities (crossed with state and species?) as commercial or other
 
 * add field for National Stranding DB record ID?
 
@@ -7,6 +10,6 @@ https://docs.google.com/spreadsheets/d/1nIJmpcRbp58kwYhEJRStRMcJH8U_Roaa/edit?pl
 
 * add "Other.identifiers" field
 
-* populate past 5 years of NSDB IDs, lats for humpbacks
+* populate past 5 years of NSDB IDs, lats, Other.identifiers for humpbacks
 
 * Add script to repo in a new R directory that Jim used to concatenate all narrative fields in NSDB entry. 
