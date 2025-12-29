@@ -7,7 +7,7 @@ library(magrittr)
 library(readxl)
 
 # import data
-data = read_excel("../data/HCMSI_Records_SWFSC_Main.xlsx")
+data <- data.og <- read_excel("../data/HCMSI_Records_SWFSC_Main.xlsx")
 spgroups <- read.csv("../data/lt_SpeciesGroups.csv")
 hcmsi.sources <- read.csv("../data/lt_IntrxnTypes.csv")
 
@@ -59,14 +59,13 @@ other <- hcmsi.sources %>% filter(SARTable=="other") %>% select(Interaction.Type
 rm(hcmsi.sources)
 
 
-####**** edits to data ****#### (set up as stops with record numbers to fix)
+# edits to data
 
-# correct MSI.Value field for mis-typed entries
+## correct MSI.Value field for mis-typed entries
 data$MSI.Value[which(data$Final.Injury.Assessment=="NSI")] = 0
 data$MSI.Value[which(data$Final.Injury.Assessment %in% c("DEAD","CAPTIVITY"))] = 1
-
-# assign small cetacean and pinniped records with final SI designation as MSI.Value=1
-# (not applicable to large whales, which may have a prorated value)
+### assign small cetacean and pinniped records with final SI designation as MSI.Value=1
+### (not applicable to large whales, which may have a prorated value)
 pinn.smcet.SI.final = which(data$Final.Injury.Assessment=="SI" & 
                               data$Species %in% c(pinn.spp, sm.cet.spp))
 data$MSI.Value[pinn.smcet.SI.final] = 1
@@ -77,9 +76,9 @@ rm(pinn.smcet.SI.final)
 ## List of Fisheries (LOF) codes 
 data[which(data$Interaction.Type %in% commercial), "COUNT.AGAINST.LOF"] = "Y"
 data[which(data$Interaction.Type %in% other), "COUNT.AGAINST.LOF"]="N"
-# assign initial NSI designations as not counting against LOF
-# (even if an interaction occurred with a commercial fishery, the interaction 
-#  needs to have an initial designation of SI for it to 'count' against LOF)
+### assign initial NSI designations as not counting against LOF
+### (even if an interaction occurred with a commercial fishery, the interaction 
+###  needs to have an initial designation of SI for it to 'count' against LOF)
 data[which(data$Initial.Injury.Assessment=="NSI"), "COUNT.AGAINST.LOF"] = "N"
 
 ## PBR codes
@@ -89,10 +88,12 @@ data[PBR.yes, "COUNT.AGAINST.PBR"] = "Y"
 data[PBR.no, "COUNT.AGAINST.PBR"] = "N"
 rm(PBR.yes, PBR.no)
 
-# 
+# summarize data changes suggested 
+all.equal(data, data.og)
+
+
 # # write changes to xlsx (!!first copy original xlsx to R folder as working copy so can check changes!!)
 # library(openxlsx)   # GHCopilot suggests this is the best package for editing individual cell values in excel
-# data.og = read_excel("../data/HCMSI_Records_SWFSC_Main.xlsx")
 # wb <- loadWorkbook("HCMSI_Records_SWFSC_Main.xlsx")
 # 
 # ## write changes to MSI.Value
