@@ -1,16 +1,15 @@
 # MSI_data_check provides error checking for "HCMSI_Records_SWFSC_Main.xlsx"
 # This code was cut and adapted from SeriousInjuryExtract.r
 
-library(readxl)
+# Load required packages
 library(dplyr)
 library(magrittr)
+library(readxl)
 
-# set local path to main data file
-path.dat <- "C://Users/alex.curtis/Data/Github/MSI-data/data/"
-
-data = read_excel(paste0(path.dat, "HCMSI_Records_SWFSC_Main.xlsx"))
-spgroups <- read.csv(paste0(path.dat, "lt_SpeciesGroups.csv"))
-hcmsi.sources <- read.csv(paste0(path.dat, "lt_IntrxnTypes.csv"))
+# import data
+data = read_excel("../data/HCMSI_Records_SWFSC_Main.xlsx")
+spgroups <- read.csv("../data/lt_SpeciesGroups.csv")
+hcmsi.sources <- read.csv("../data/lt_IntrxnTypes.csv")
 
 # check for missing data from critical fields
 missing.data <- function(df) {
@@ -30,7 +29,7 @@ missing.data <- function(df) {
   }
 }
 missing.data(data)
-invisible(Sys.sleep(10))
+invisible(Sys.sleep(1))
 rm(missing.data)
 
 # any species not captured in Species_Groups.csv?
@@ -90,3 +89,39 @@ data[PBR.yes, "COUNT.AGAINST.PBR"] = "Y"
 data[PBR.no, "COUNT.AGAINST.PBR"] = "N"
 rm(PBR.yes, PBR.no)
 
+# 
+# # write changes to xlsx (!!first copy original xlsx to R folder as working copy so can check changes!!)
+# library(openxlsx)   # GHCopilot suggests this is the best package for editing individual cell values in excel
+# data.og = read_excel("../data/HCMSI_Records_SWFSC_Main.xlsx")
+# wb <- loadWorkbook("HCMSI_Records_SWFSC_Main.xlsx")
+# 
+# ## write changes to MSI.Value
+# ic.msi <- which(names(data) == "MSI.Value")
+# ir.msi <- which(data.og$MSI.Value != data$MSI.Value)
+# for (i in 1:length(ir.msi)) {
+#   writeData(wb, sheet = "Anthropogenic_Mortality_Serious", x = unlist(data[ir.msi[i], ic.msi]),
+#             startCol = ic.msi, startRow = ir.msi[i] + 1)
+# }
+# 
+# ## write changes to COUNT.AGAINST.PBR
+# ic.pbr <- which(names(data) == "COUNT.AGAINST.PBR")
+# ir.pbr <- which(data.og$COUNT.AGAINST.PBR != data$COUNT.AGAINST.PBR)
+# for (i in 1:length(ir.pbr)) {
+#   writeData(wb, sheet = "Anthropogenic_Mortality_Serious", x = unlist(data[ir.pbr[i], ic.pbr]),
+#             startCol = ic.pbr, startRow = ir.pbr[i] + 1)
+# }
+# 
+# ## write changes to COUNT.AGAINST.LOF
+# ic.lof <- which(names(data) == "COUNT.AGAINST.LOF")
+# ir.lof <- which(data.og$COUNT.AGAINST.LOF != data$COUNT.AGAINST.LOF)
+# for (i in 1:length(ir.lof)) {
+#   writeData(wb, sheet = "Anthropogenic_Mortality_Serious", x = unlist(data[ir.lof[i], ic.lof]),
+#             startCol = ic.lof, startRow = ir.lof[i] + 1)
+# }
+# 
+# # Save workbook
+# saveWorkbook(wb, "HCMSI_Records_SWFSC_Main.xlsx", overwrite = TRUE)
+# 
+# # check work
+# data.ed = read_excel("HCMSI_Records_SWFSC_Main.xlsx")
+# all.equal(data.ed, data)  # should return TRUE
