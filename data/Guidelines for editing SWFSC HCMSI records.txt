@@ -1,7 +1,11 @@
+Populate DateAdded field for new records going forward. 
+
 At a minimum, retain lat/lon info in Comments for humpbacks and for harbor seals where needed to show stock attribution. Preferably retain for all records to support future modeling efforts. No confidentiality issues per 2024 regulations following 2007 MSRA. 
 
 Add entanglement and vessel strike IDs, CRC IDs to Other.identifiers field
 
 No carriage returns in narrative (Comments field).
 
-Use consistent terminology to maintain functionality of automated reporting (see SeriousInjuryExtract.R).
+Use consistent terminology to maintain functionality of automated reporting (see SeriousInjuryExtract.R), consistent language in Comments to support potential future application of SeriousInjury package. 
+
+After additions, re-sort by Species, Year, Month, Day, Interaction.Type, SWFSC.Record.
