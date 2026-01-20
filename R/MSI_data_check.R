@@ -42,7 +42,6 @@ rm(unlisted.spp)
 # subset species list for each species group
 pinn.spp <- spgroups %>% filter(SpeciesGroup=="pinniped") %>% select(Species) %>% unlist()
 sm.cet.spp <- spgroups %>% filter(SpeciesGroup=="small cetacean") %>% select(Species) %>% unlist()
-sm.cet.spp <- spgroups %>% filter(SpeciesGroup=="small cetacean") %>% select(Species) %>% unlist()
 lg.whale.spp <- spgroups %>% filter(SpeciesGroup=="large whale") %>% select(Species) %>% unlist()
 rm(spgroups)
 
@@ -71,21 +70,21 @@ pinn.smcet.SI.final = which(data$Final.Injury.Assessment=="SI" &
 data$MSI.Value[pinn.smcet.SI.final] = 1
 rm(pinn.smcet.SI.final)
 
-###*** add checks for whale values
+###*** ADD CHECKS FOR WHALE VALUES
 
 ## List of Fisheries (LOF) codes 
-data[which(data$Interaction.Type %in% commercial), "COUNT.AGAINST.LOF"] = "Y"
-data[which(data$Interaction.Type %in% other), "COUNT.AGAINST.LOF"]="N"
+data$COUNT.AGAINST.LOF[which(data$Interaction.Type %in% commercial)] = "Y"
+data$COUNT.AGAINST.LOF[which(data$Interaction.Type %in% other)]="N"
 ### assign initial NSI designations as not counting against LOF
 ### (even if an interaction occurred with a commercial fishery, the interaction 
 ###  needs to have an initial designation of SI for it to 'count' against LOF)
-data[which(data$Initial.Injury.Assessment=="NSI"), "COUNT.AGAINST.LOF"] = "N"
+data$COUNT.AGAINST.LOF[which(data$Initial.Injury.Assessment=="NSI")] = "N"
 
 ## PBR codes
 PBR.yes = grep("CAPTIVITY|DEAD|SI|SI (PRORATE)", data$Final.Injury.Assessment)
 PBR.no = grep("NSI", data$Final.Injury.Assessment)
-data[PBR.yes, "COUNT.AGAINST.PBR"] = "Y"
-data[PBR.no, "COUNT.AGAINST.PBR"] = "N"
+data$COUNT.AGAINST.PBR[PBR.yes] = "Y"
+data$COUNT.AGAINST.PBR[PBR.no] = "N"
 rm(PBR.yes, PBR.no)
 
 # summarize data changes suggested 
