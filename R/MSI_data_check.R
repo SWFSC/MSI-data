@@ -91,6 +91,25 @@ rm(PBR.yes, PBR.no)
 all.equal(data, data.og)
 
 
+# review initial versus final determinations for most recent six years 
+# (to account for addition of records for some species in advance of typical schedule)
+# summarized initial condition NSI/SI records by interaction.type
+yy <- (max(data$Year)-5):max(data$Year)
+data.last6 <- data %>% filter(Year %in% yy)
+mortality = which(data.last6$Final.Injury.Assessment=="DEAD")   ### SHOULDN'T THIS BE INITIAL? SAME IN SeriousInjuryExtract.R ###
+alive = data.last6[-mortality,]
+dead = data.last6[mortality,]
+rm(mortality, yy)
+# SI determinations
+PINNIPEDS.DETERMINED = alive %>% filter(Species %in% pinn.spp)
+SMALL.CET.DETERMINED = alive %>% filter(Species %in% sm.cet.spp)
+WHALES.DETERMINED = alive %>% filter(Species %in% lg.whale.spp)
+## check initial vs final assessments (*** MOVE TO A SCRIPT FOR CHECKING MOST RECENT YEAR OR FIVE YEARS?***)
+table(PINNIPEDS.DETERMINED$Initial.Injury.Assessment, PINNIPEDS.DETERMINED$Final.Injury.Assessment)
+table(SMALL.CET.DETERMINED$Initial.Injury.Assessment, SMALL.CET.DETERMINED$Final.Injury.Assessment)
+table(WHALES.DETERMINED$Initial.Injury.Assessment, WHALES.DETERMINED$Final.Injury.Assessment)
+
+
 # # write changes to xlsx (!!first copy original xlsx to R folder as working copy so can check changes!!)
 # library(openxlsx)   # GHCopilot suggests this is the best package for editing individual cell values in excel
 # wb <- loadWorkbook("HCMSI_Records_SWFSC_Main.xlsx")
