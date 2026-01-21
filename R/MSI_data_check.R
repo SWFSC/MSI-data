@@ -11,7 +11,7 @@ data <- data.og <- read_excel("../data/HCMSI_Records_SWFSC_Main.xlsx")
 spgroups <- read.csv("../data/lt_SpeciesGroups.csv")
 hcmsi.sources <- read.csv("../data/lt_IntrxnTypes.csv")
 
-# check for missing data from critical fields
+# check for missing data from critical fields (*** MAKE THIS MORE THOROUGH AND MORE INFORMATIVE ***)
 missing.data <- function(df) {
   # find missing data by column
   a <- which(is.na(df$Initial.Injury.Assessment==TRUE))

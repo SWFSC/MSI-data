@@ -1,11 +1,18 @@
-Populate DateAdded field for new records going forward. 
-
-At a minimum, retain lat/lon info in Comments for humpbacks and for harbor seals where needed to show stock attribution. Preferably retain for all records to support future modeling efforts. No confidentiality issues per 2024 regulations following 2007 MSRA. 
-
-Add entanglement and vessel strike IDs, CRC IDs to Other.identifiers field
-
 No carriage returns in narrative (Comments field).
 
-Use consistent terminology to maintain functionality of automated reporting (see SeriousInjuryExtract.R), consistent language in Comments to support potential future application of SeriousInjury package. 
+Use pulldown menus to maintain consistent terminology for automated reporting summmaries (see SeriousInjuryExtract.R).
 
-After additions, re-sort by Species, Year, Month, Day, Interaction.Type, SWFSC.Record.
+Use consistent language in Comments to support potential future application of SeriousInjury package. 
+
+Populate DateAdded field for new records.
+
+Populate Lat.Dec and Lon.Dec fields at a minimum for humpbacks and for harbor seals, where needed to show stock attribution. Preferably populate for all records to support future modeling efforts (no confidentiality issues per 2024 regulations following 2007 MSRA, Kristy Long pers. comm.).
+
+For large whales, add NSDB record ID, entanglement and vessel strike IDs, and CRC ID if available to Other.Identifiers field.
+
+If multiple sightings of an injured/entangled humpback whale, populate LatRange.Dec.
+
+Prior to committing modified excel file to MSI-data repo, re-sort by Species, Year, Month, Day, Interaction.Type, and SWFSC.Record (in that order).
+
+Add new SWFSC.Record numbers in tranches (e.g., after completing addition of all records from a given source), starting with max(SWFSC.Record)+1, and incrementing by one in order as sorted based on DateAdded, Year, Month, Day, Species, and Interaction.Type (in that order).
+
