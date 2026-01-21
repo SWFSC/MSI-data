@@ -1,0 +1,5 @@
+# https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# History files
+.Rapp.history
+.Rhistory
+/R/.Rhistory
