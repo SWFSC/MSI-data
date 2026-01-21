@@ -104,7 +104,7 @@ rm(mortality, yy)
 PINNIPEDS.DETERMINED = alive %>% filter(Species %in% pinn.spp)
 SMALL.CET.DETERMINED = alive %>% filter(Species %in% sm.cet.spp)
 WHALES.DETERMINED = alive %>% filter(Species %in% lg.whale.spp)
-## check initial vs final assessments (*** MOVE TO A SCRIPT FOR CHECKING MOST RECENT YEAR OR FIVE YEARS?***)
+## check initial vs final assessments
 table(PINNIPEDS.DETERMINED$Initial.Injury.Assessment, PINNIPEDS.DETERMINED$Final.Injury.Assessment)
 table(SMALL.CET.DETERMINED$Initial.Injury.Assessment, SMALL.CET.DETERMINED$Final.Injury.Assessment)
 table(WHALES.DETERMINED$Initial.Injury.Assessment, WHALES.DETERMINED$Final.Injury.Assessment)
