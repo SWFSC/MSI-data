@@ -33,3 +33,5 @@ NOTES SPECIFIC TO LARGE-WHALES OR ENTANGLEMENTS
 CAUTIONS REGARDING DATA-FILE X R-SCRIPT INTERACTIONS
 
 - Added fields (recent examples: DateAdded, latitude ranges, etc), and the order of these in the table, affect AppendixTable.R in GitHub repo MSI-report (where object 'x' is defined, approx. lines 10-15 in that file).  If fields are added, or the order of fields is changed, AppendixTable.R needs to be edited.
+
+- If user wants to add a new Interaction.Type to the drop-down for that field, this is done by adding it to the DataValidation sheet.  This new value must also be added to one of the lookup tables (lt_LOF.csv or lt_JVC_extras.csv) so that it is read by SeriousInjuryExtract.R (in MSI-report repository).  Similar if any changes are made to a species name or species group.
