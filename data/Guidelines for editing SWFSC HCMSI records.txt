@@ -1,3 +1,13 @@
+AFTER ENTERING A BATCH OF DATA
+
+- Prior to committing modified excel file to MSI-data repo, re-sort by Species, Year, Month, Day, Interaction.Type, and SWFSC.Record (in that order).
+
+- Add new SWFSC.Record numbers in tranches (e.g., after completing addition of all records from a given source), starting with max(SWFSC.Record)+1, and incrementing by one in order as sorted based on DateAdded, Year, Month, Day, Species, and Interaction.Type (in that order).
+
+
+
+DATA ENTRY GUIDELINES (GENERAL)
+
 No carriage returns in narrative (Comments field).
 
 Use pulldown menus to maintain consistent terminology for automated reporting summmaries (see SeriousInjuryExtract.R).
@@ -6,13 +16,20 @@ Use consistent language in Comments to support potential future application of S
 
 Populate DateAdded field for new records.
 
-Populate Lat.Dec and Lon.Dec fields at a minimum for humpbacks and for harbor seals, where needed to show stock attribution. Preferably populate for all records to support future modeling efforts (no confidentiality issues per 2024 regulations following 2007 MSRA, Kristy Long pers. comm.).
 
-For large whales, add NSDB record ID, entanglement and vessel strike IDs, and CRC ID if available to Other.Identifiers field.
 
-If multiple sightings of an injured/entangled humpback whale, populate LatRange.Dec.
+NOTES SPECIFIC TO LARGE-WHALES OR ENTANGLEMENTS
 
-Prior to committing modified excel file to MSI-data repo, re-sort by Species, Year, Month, Day, Interaction.Type, and SWFSC.Record (in that order).
+- For records involving entanglements, "State" should reflect the location where the animal became entangled, if known.  "County" reflects location of the detection.
 
-Add new SWFSC.Record numbers in tranches (e.g., after completing addition of all records from a given source), starting with max(SWFSC.Record)+1, and incrementing by one in order as sorted based on DateAdded, Year, Month, Day, Species, and Interaction.Type (in that order).
+- If multiple sightings of an injured/entangled humpback whale, populate LatRange.Dec.
 
+- Populate Lat.Dec and Lon.Dec fields at a minimum for humpbacks and for harbor seals, where needed to show stock attribution. Preferably populate for all records to support future modeling efforts (no confidentiality issues per 2024 regulations following 2007 MSRA, Kristy Long pers. comm.).
+
+- For large whales, add NSDB record ID, entanglement and vessel strike IDs, and CRC ID if available to Other.Identifiers field.
+
+
+
+CAUTIONS REGARDING DATA-FILE X R-SCRIPT INTERACTIONS
+
+- Added fields (recent examples: DateAdded, latitude ranges, etc), and the order of these in the table, affect AppendixTable.R in GitHub repo MSI-report (where object 'x' is defined, approx. lines 10-15 in that file).  If fields are added, or the order of fields is changed, AppendixTable.R needs to be edited.
