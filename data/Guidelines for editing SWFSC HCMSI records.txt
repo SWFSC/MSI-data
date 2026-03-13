@@ -8,13 +8,13 @@ AFTER ENTERING A BATCH OF DATA
 
 DATA ENTRY GUIDELINES (GENERAL)
 
-No carriage returns in narrative (Comments field).
+- No carriage returns in narrative (Comments field).
 
-Use pulldown menus to maintain consistent terminology for automated reporting summmaries (see SeriousInjuryExtract.R).
+- Use pulldown menus to maintain consistent terminology for automated reporting summmaries (see SeriousInjuryExtract.R).
 
-Use consistent language in Comments to support potential future application of SeriousInjury package. 
+- Use consistent language in Comments to support potential future application of SeriousInjury package. 
 
-Populate DateAdded field for new records.
+- Populate DateAdded field for new records.
 
 
 
