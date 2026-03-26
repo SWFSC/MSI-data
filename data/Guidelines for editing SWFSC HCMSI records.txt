@@ -18,7 +18,7 @@ DATA ENTRY GUIDELINES (GENERAL)
 
 
 
-NOTES SPECIFIC TO LARGE-WHALES OR ENTANGLEMENTS
+NOTES SPECIFIC TO LARGE-WHALES OR ENTANGLEMENTS (ALSO HARBOR SEALS)
 
 - For records involving entanglements, "State" should reflect the location where the animal became entangled, if known.  "County" reflects location of the detection.
 
