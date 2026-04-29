@@ -16,6 +16,8 @@ DATA ENTRY GUIDELINES (GENERAL)
 
 - Populate DateAdded field for new records.
 
+- Include 'OBSERVER PROGRAM' at end of Comment field for any observer-program records
+
 
 
 NOTES SPECIFIC TO LARGE-WHALES OR ENTANGLEMENTS (ALSO HARBOR SEALS)
