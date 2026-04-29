@@ -9,7 +9,7 @@ library(readxl)
 # import data
 data <- data.og <- read_excel("../data/HCMSI_Records_SWFSC_Main.xlsx")
 spgroups <- read.csv("../data/lt_SpeciesGroups.csv")
-hcmsi.sources <- read.csv("../data/lt_IntrxnTypes.csv")
+hcmsi.sources <- read.csv("../data/lt_LOF.csv")
 
 # check for missing data from critical fields (*** MAKE THIS MORE THOROUGH AND MORE INFORMATIVE ***)
 missing.data <- function(df) {
