@@ -2,7 +2,7 @@ AFTER ENTERING A BATCH OF DATA
 
 - Prior to committing modified excel file to MSI-data repo, re-sort by Species, Year, Month, Day, Interaction.Type, and SWFSC.Record (in that order).
 
-- Add new SWFSC.Record numbers in tranches (e.g., after completing addition of all records from a given source), starting with max(SWFSC.Record)+1, and incrementing by one in order as sorted based on DateAdded, Year, Month, Day, Species, and Interaction.Type (in that order).
+- Add new SWFSC.Record numbers in tranches (e.g., after completing addition of all records from a given source), starting with max(SWFSC.Record)+1, and incrementing by one in order as sorted based on SWFSC.Record.ID, DateAdded, Year, Month, Day, Species, and Interaction.Type (in that order).
 
 
 
